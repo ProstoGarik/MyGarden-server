@@ -8,6 +8,7 @@ using MyGarden.Server.Entity.Events;
 using MyGarden.Server.Entity.Common;
 using MyGarden.Server.Entities;
 using MyGarden.Server.Entities.Events;
+using MyGarden.Server.Entities.Security;
 
 namespace MyGarden.Server.Data
 {
@@ -29,6 +30,7 @@ namespace MyGarden.Server.Data
     {
         private ContextConfiguration Configuration { get; } = configuration;
 
+        public DbSet<Account> Accounts => Set<Account>();
         public DbSet<Group> Groups => Set<Group>();
         public DbSet<Plant> Plants => Set<Plant>();
         public DbSet<Event> Events => Set<Event>();

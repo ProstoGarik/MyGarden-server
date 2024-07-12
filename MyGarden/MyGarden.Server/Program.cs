@@ -1,7 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using MyGarden.Server.Configuration.Repository;
 using MyGarden.Server.Data;
 using MyGarden.Server.Data.Initialization;
 using MyGarden.Server.Middleware;
+using MyGarden.Server.Middleware.Security;
+using MyGarden.Server.Middleware.Security.Requirement;
 using MyGarden.Server.Service;
 using MyGarden.Server.Service.Common;
 using MyGarden.Server.Service.Plants;
@@ -18,6 +23,9 @@ var configuration = new ConfigurationManager(builder.Configuration);
 
 RegisterCoreServices(builder.Services);
 RegisterDataSources(builder.Services, configuration.DataConfiguration);
+RegisterIdentityServices(builder.Services, configuration.IdentityConfiguration);
+RegisterAuthorizationServices(builder.Services);
+RegisterAuthenticationServices(builder.Services, configuration.TokenConfiguration);
 RegisterCorsServices(builder.Services);
 
 var application = builder.Build();
@@ -31,6 +39,63 @@ application.UseCors();
 InitializeDataSources(application);
 
 application.Run();
+
+/// <summary>
+///     Зарегистрировать сервисы идентификации.
+/// </summary>
+/// <param name="services">Коллекция сервисов.</param>
+/// <param name="configuration">Конфигурации модуля идентификации.</param>
+void RegisterIdentityServices(IServiceCollection services, IdentityConfiguration configuration)
+{
+    services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<IdentityContext>()
+        .AddUserManager<UserManager<IdentityUser>>()
+        .AddRoleManager<RoleManager<IdentityRole>>()
+        .AddSignInManager<SignInManager<IdentityUser>>();
+
+    services.Configure<IdentityOptions>(options => configuration.GetOptions());
+}
+
+/// <summary>
+///     Зарегистрировать сервисы авторизации.
+/// </summary>
+/// <param name="services">Коллекция сервисов.</param>
+void RegisterAuthorizationServices(IServiceCollection services)
+{
+    services.AddAuthorizationBuilder()
+        .AddPolicy(
+            DefaultAuthorizationRequirement.PolicyCode,
+            policy => policy.Requirements.Add(new DefaultAuthorizationRequirement()));
+
+    services.AddSingleton<IAuthorizationHandler, PolicyAuthorizationHandler<DefaultAuthorizationRequirement>>();
+}
+
+/// <summary>
+///     Зарегистрировать сервисы аутентификации.
+/// </summary>
+/// <param name="services">Коллекция сервисов.</param>
+/// <param name="configuration">Конфигурация токенов.</param>
+void RegisterAuthenticationServices(IServiceCollection services, TokenConfiguration configuration)
+{
+    services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.IncludeErrorDetails = true;
+        options.TokenValidationParameters = configuration.GetValidationParameters();
+    });
+
+    services.AddCors(options =>
+    {
+        options.AddDefaultPolicy(builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        });
+    });
+}
 
 
 /// <summary>
