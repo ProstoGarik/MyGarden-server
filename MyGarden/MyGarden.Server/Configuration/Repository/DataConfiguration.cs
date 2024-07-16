@@ -29,5 +29,18 @@ namespace MyGarden.Server.Configuration.Repository
             };
         }
 
+        public ContextConfiguration GetIdentityContextConfiguration(bool isDebugMode)
+        {
+            var connectionString = Configuration.GetConnectionString("Identity");
+
+            HandleStringValue(connectionString, "Identity connection string is null or empty!");
+
+            return GetConnectionType().ToLower() switch
+            {
+                "sqlite" => new SqliteConfiguration(connectionString!, isDebugMode),
+                _ => throw new Exception("Unknown connection type!")
+            };
+        }
+
     }
 }

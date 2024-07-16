@@ -10,6 +10,7 @@ using MyGarden.Server.Middleware.Security.Requirement;
 using MyGarden.Server.Service;
 using MyGarden.Server.Service.Common;
 using MyGarden.Server.Service.Plants;
+using MyGarden.Server.Service.Security;
 using ConfigurationManager = MyGarden.Server.Configuration.ConfigurationManager;
 
 #if DEBUG
@@ -34,7 +35,6 @@ application.UseMiddleware<ExceptionHandler>();
 application.UseAuthentication();
 application.UseAuthorization();
 application.MapControllers();
-application.UseCors();
 
 InitializeDataSources(application);
 
@@ -104,7 +104,11 @@ void RegisterAuthenticationServices(IServiceCollection services, TokenConfigurat
 /// <param name="services">Коллекция сервисов.</param>
 void RegisterCoreServices(IServiceCollection services)
 {
+    services.AddScoped<TokenService>();
+    services.AddScoped<SecurityService>();
+
     services.AddScoped<DataEntityService>();
+    services.AddScoped<AccountService>();
     services.AddScoped<GroupService>();
     services.AddScoped<PlantService>();
     services.AddScoped<EventService>();
@@ -117,6 +121,7 @@ void RegisterCoreServices(IServiceCollection services)
     services.AddControllers();
 }
 
+
 /// <summary>
 ///     Зарегистрировать источники данных.
 /// </summary>
@@ -125,9 +130,13 @@ void RegisterCoreServices(IServiceCollection services)
 void RegisterDataSources(IServiceCollection services, DataConfiguration configuration)
 {
     var dataConfiguration = configuration.GetDefaultContextConfiguration(IsDebugMode);
+    var identityConfiguration = configuration.GetIdentityContextConfiguration(IsDebugMode);
+
     services.AddScoped(provider => new DataContext(dataConfiguration));
+    services.AddScoped(provider => new IdentityContext(identityConfiguration));
 
     services.AddScoped<DataInitializationScript>();
+    services.AddScoped<IdentityInitializationScript>();
 }
 
 /// <summary>
@@ -154,5 +163,5 @@ async void InitializeDataSources(WebApplication application)
     using var scope = application.Services.CreateScope();
 
     await scope.ServiceProvider.GetRequiredService<DataInitializationScript>().Run();
+    await scope.ServiceProvider.GetRequiredService<IdentityInitializationScript>().Run();
 }
-

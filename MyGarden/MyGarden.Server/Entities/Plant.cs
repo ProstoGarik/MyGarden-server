@@ -111,17 +111,17 @@ namespace MyGarden.Server.Entities
 
 
         public required int GroupId { get; set; }
-        public int WateringNeedId { get; set; }
-        public int LightNeedId { get; set; }
-        public int StageId { get; set; }
+        public int? WateringNeedId { get; set; }
+        public int? LightNeedId { get; set; }
+        public int? StageId { get; set; }
 
         public Group? Group { get; set; }
         public WateringNeed? WateringNeed { get; set; }
         public LightNeed? LightNeed { get; set; }
         public GrowStage? Stage { get; set; }
 
-        public int ImageId { get; set; }
-        public int RipeningPeriod { get; set; }
+        public int? ImageId { get; set; }
+        public int? RipeningPeriod { get; set; }
 
         public string? Title { get; set; }
         public string? BiologyTitle { get; set; }

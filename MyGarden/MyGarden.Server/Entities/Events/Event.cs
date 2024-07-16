@@ -75,7 +75,7 @@ namespace MyGarden.Server.Entity.Events
         public required int PlantId { get; set; }
 
         public Plant? Plant { get; set; }
-        public DateTime Date { get; set; } = DateTime.MinValue;
+        public DateTime? Date { get; set; } = DateTime.MinValue;
 
         public List<Notification> Notifications { get; set; } = [];
     }
