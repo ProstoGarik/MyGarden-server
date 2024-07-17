@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MyGarden.Server.Configuration.Repository;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using ConfigurationManager = MyGarden.Server.Configuration.ConfigurationManager;

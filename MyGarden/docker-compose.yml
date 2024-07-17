@@ -1,0 +1,12 @@
+services:
+  server:
+    container_name: 'my-garden-server'
+    build:
+      context: '.'
+      dockerfile: 'MyGarden.Server/Dockerfile'
+    ports:
+      - '80:8080'
+    networks:
+      - 'inner'
+networks:
+  inner:

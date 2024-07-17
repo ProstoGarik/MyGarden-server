@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyGarden.Server.Configuration;
-using MyGarden.Server.Data.Util;
 using MyGarden.Server.Data;
+using MyGarden.Server.Data.Transfer;
+using MyGarden.Server.Data.Util;
 using MyGarden.Server.Entities.Security;
 using MyGarden.Server.Middleware.Security.Requirement;
 using MyGarden.Server.Service.Security;
 using System.Data;
-using Microsoft.EntityFrameworkCore;
-using MyGarden.Server.Data.Transfer;
 using RegisterRequest = MyGarden.Server.Data.Transfer.RegisterRequest;
 
 namespace MyGarden.Server.Controllers.Security

@@ -1,14 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MyGarden.Server.Data.Configuration;
-using System.Data;
-using System.Xml.Linq;
-using MyGarden.Server.Entity;
-using MyGarden.Server.Entity.Events;
-using MyGarden.Server.Entity.Common;
 using MyGarden.Server.Entities;
 using MyGarden.Server.Entities.Events;
 using MyGarden.Server.Entities.Security;
+using MyGarden.Server.Entity.Common;
+using MyGarden.Server.Entity.Events;
+using System.Data;
 
 namespace MyGarden.Server.Data
 {

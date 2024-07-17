@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyGarden.Server.Data.Configuration;
-using System.Data;
-using System.Xml.Linq;
 
 namespace MyGarden.Server.Entities.Security
 {

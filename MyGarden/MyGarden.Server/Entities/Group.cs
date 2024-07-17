@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyGarden.Server.Data.Configuration;
-using MyGarden.Server.Entity.Events;
 
 namespace MyGarden.Server.Entities
 {

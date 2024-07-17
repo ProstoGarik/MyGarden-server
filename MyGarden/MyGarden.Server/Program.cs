@@ -14,7 +14,7 @@ using MyGarden.Server.Service.Security;
 using ConfigurationManager = MyGarden.Server.Configuration.ConfigurationManager;
 
 #if DEBUG
- const bool IsDebugMode = true;
+const bool IsDebugMode = true;
 #else
     private const bool IsDebugMode = false;
 #endif
