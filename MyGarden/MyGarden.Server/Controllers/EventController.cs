@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGarden.Server.Entities;
+using MyGarden.Server.Entity.Events;
 using MyGarden.Server.Service;
+using MyGarden.Server.Service.Common;
 using MyGarden.Server.Service.Plants;
 
 namespace MyGarden.Server.Controllers
@@ -11,12 +13,12 @@ namespace MyGarden.Server.Controllers
     /// <param name="dataEntityService">Сервис моделей.</param>
     [Route("api/[controller]")]
     [ApiController]
-    public class PlantListController(PlantService dataEntityService) : ControllerBase
+    public class EventController(EventService dataEntityService) : ControllerBase
     {
         /// <summary>
         ///     Сервис моделей.
         /// </summary>
-        private PlantService DataEntityService { get; } = dataEntityService;
+        private EventService DataEntityService { get; } = dataEntityService;
 
         /// <summary>
         ///     Получить список курсов.
@@ -26,9 +28,9 @@ namespace MyGarden.Server.Controllers
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком курсов.</returns>
         [HttpGet]
-        public async Task<ActionResult<List<Plant>>> Get([FromQuery] List<int> ids)
+        public async Task<ActionResult<List<Event>>> Get([FromQuery] List<int> ids)
         {
-            return await DataEntityService.Get(DataEntityService.DataContext.Plants, ids);
+            return await DataEntityService.Get(DataEntityService.DataContext.Events, ids);
         }
 
         /// <summary>
@@ -37,9 +39,9 @@ namespace MyGarden.Server.Controllers
         /// <param name="entities">Список курсов.</param>
         /// <returns>Результат операции.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] List<Plant> entities)
+        public async Task<IActionResult> Post([FromBody] List<Event> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Plants, entities);
+            var status = await DataEntityService.Set(DataEntityService.DataContext.Events, entities);
 
             if (!status)
             {
@@ -57,7 +59,7 @@ namespace MyGarden.Server.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody] List<int> ids)
         {
-            var status = await DataEntityService.Remove(DataEntityService.DataContext.Plants, ids);
+            var status = await DataEntityService.Remove(DataEntityService.DataContext.Events, ids);
 
             if (!status)
             {
