@@ -1,0 +1,49 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/plants",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gardenapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/plants",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/recognize",
+      "UpstreamHttpMethod": [ "Get"],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recognizeapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/recognize"
+    },
+    {
+      "UpstreamPathTemplate": "/api/auth",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/auth"
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}
