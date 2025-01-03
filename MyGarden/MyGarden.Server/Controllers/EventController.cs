@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGarden.Server.Entities;
 using MyGarden.Server.Entity.Events;
-using MyGarden.Server.Service;
 using MyGarden.Server.Service.Common;
-using MyGarden.Server.Service.Plants;
 
 namespace MyGarden.Server.Controllers
 {

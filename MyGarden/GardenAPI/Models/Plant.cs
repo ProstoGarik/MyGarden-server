@@ -13,7 +13,7 @@ namespace GardenAPI.Models
 
         [Column("plant_title")]
         public string Title { get; set; } = "Some plant";
-        
+
         [Column("plant_description")]
         public string Description { get; set; } = "Some description";
     }

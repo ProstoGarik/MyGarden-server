@@ -21,19 +21,31 @@
     },
     {
       "UpstreamPathTemplate": "/api/recognize",
-      "UpstreamHttpMethod": [ "Get"],
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "recognizeapi",
-          "Port": 8080
+          "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/recognize"
+      "DownstreamPathTemplate": "/recognize"
+    },
+    {
+      "UpstreamPathTemplate": "/api/search",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "recognizeapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/search"
     },
     {
       "UpstreamPathTemplate": "/api/auth",
-      "UpstreamHttpMethod": ["Post"],
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

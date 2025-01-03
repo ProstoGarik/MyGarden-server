@@ -1,6 +1,5 @@
 using GardenAPI.Data;
 using JwtAuthenticationManager;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

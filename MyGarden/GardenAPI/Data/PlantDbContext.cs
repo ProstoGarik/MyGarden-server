@@ -1,7 +1,5 @@
 ﻿using GardenAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace GardenAPI.Data
 {
@@ -9,7 +7,8 @@ namespace GardenAPI.Data
     {
         public DbSet<Plant> Plants { get; set; }
 
-        public PlantDbContext(DbContextOptions<PlantDbContext> dbContextOptions) : base(dbContextOptions) {
+        public PlantDbContext(DbContextOptions<PlantDbContext> dbContextOptions) : base(dbContextOptions)
+        {
             Database.EnsureCreated();
             //try
             //{
@@ -26,6 +25,6 @@ namespace GardenAPI.Data
             //    Console.WriteLine(e.Message);
             //}
         }
-        
+
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGarden.Server.Entities;
-using MyGarden.Server.Service;
 using MyGarden.Server.Service.Plants;
 
 namespace MyGarden.Server.Controllers

@@ -101,6 +101,14 @@ services:
     networks:
       - backend
 
+  recognizeapi:
+    container_name: recognize-api
+    build:
+      context: ./RecognizeAPI
+      dockerfile: Dockerfile
+    networks:
+      - backend
+
   apigateway:
     container_name: api-gateway
     image: ${DOCKER_REGISTRY-}apigateway
@@ -111,6 +119,7 @@ services:
       - 8081:8080
     networks:
       - backend
+
     
 
 volumes:

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{bd1fb871-d3e2-4b54-a066-cb73e12c0b46}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>main.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Web launcher</LaunchProvider>
+    <InterpreterId />
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="catalogues\ailita\links\error_flower_pages.txt" />
+    <Content Include="catalogues\ailita\links\error_plant_pages.txt" />
+    <Content Include="catalogues\ailita\links\flower_links_data.txt" />
+    <Content Include="catalogues\ailita\links\plant_links_data.txt" />
+    <Content Include="catalogues\altay\links\error_flower_pages.txt" />
+    <Content Include="catalogues\altay\links\error_plant_pages.txt" />
+    <Content Include="catalogues\altay\links\flower_links_data.txt" />
+    <Content Include="catalogues\altay\links\plant_links_data.txt" />
+    <Content Include="catalogues\gavrish\links\error_plant_pages.txt" />
+    <Content Include="catalogues\gavrish\links\plant_links_data.txt" />
+    <Content Include="catalogues\partner\links\error_flower_pages.txt" />
+    <Content Include="catalogues\partner\links\error_plant_pages.txt" />
+    <Content Include="catalogues\partner\links\flower_links_data.txt" />
+    <Content Include="catalogues\partner\links\plant_links_data.txt" />
+    <Content Include="catalogues\poisk\links\error_flower_pages.txt" />
+    <Content Include="catalogues\poisk\links\error_plant_pages.txt" />
+    <Content Include="catalogues\poisk\links\flower_links_data.txt" />
+    <Content Include="catalogues\poisk\links\plant_links_data.txt" />
+    <Content Include="Dockerfile" />
+    <Content Include="requirements.txt" />
+    <Content Include="uploads\amarant_sovershenstvo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="data\load_data_to_db.py" />
+    <Compile Include="data\plant_service.py" />
+    <Compile Include="extractors\ailita_extractor.py" />
+    <Compile Include="extractors\altay_extractor.py" />
+    <Compile Include="extractors\extractor.py" />
+    <Compile Include="extractors\gavrish_extractor.py" />
+    <Compile Include="extractors\partner_extractor.py" />
+    <Compile Include="extractors\poisk_extractor.py" />
+    <Compile Include="main.py" />
+    <Compile Include="recognizer\identifier.py" />
+    <Compile Include="recognizer\similarity.py" />
+    <Compile Include="utils\utils.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="catalogues\" />
+    <Folder Include="catalogues\ailita\" />
+    <Folder Include="catalogues\ailita\links" />
+    <Folder Include="catalogues\altay\" />
+    <Folder Include="catalogues\altay\links" />
+    <Folder Include="catalogues\gavrish\" />
+    <Folder Include="catalogues\gavrish\links" />
+    <Folder Include="catalogues\partner\" />
+    <Folder Include="catalogues\partner\links" />
+    <Folder Include="catalogues\poisk\" />
+    <Folder Include="catalogues\poisk\links" />
+    <Folder Include="data" />
+    <Folder Include="extractors" />
+    <Folder Include="recognizer" />
+    <Folder Include="uploads" />
+    <Folder Include="utils" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

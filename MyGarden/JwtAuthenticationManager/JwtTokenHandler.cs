@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using JwtAuthenticationManager.Models;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using JwtAuthenticationManager.Models;
-using Microsoft.IdentityModel.Tokens;
 
 namespace JwtAuthenticationManager
 {
@@ -56,11 +52,12 @@ namespace JwtAuthenticationManager
             var securityToken = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
             var token = jwtSecurityTokenHandler.WriteToken(securityToken);
 
-            return new AuthResponse { 
+            return new AuthResponse
+            {
                 UserName = user.UserName,
-                ExpiresIn = (int)tokenExpiryTimestamp.Subtract(DateTime.Now).TotalSeconds, 
+                ExpiresIn = (int)tokenExpiryTimestamp.Subtract(DateTime.Now).TotalSeconds,
                 Role = user.Role,
-                Token = token 
+                Token = token
             };
 
         }
