@@ -3,30 +3,27 @@ using MyGarden.Server.Entity.Common;
 
 namespace GardenAPI.Transfer.Common
 {
-    public static class CommonMapper
+    public static class EventMapper
     {
-        public static T ToEntity<T>(this CommonDTO game) where T : CommonEntity, new()
+        public static T ToEntity<T>(this RequestCommonDTO common) where T : CommonEntity, new()
         {
             return new T 
             { 
-                Id = game.Id, 
-                Title = game.Title, 
-                CreatedAt = game.CreatedAt, 
-                UpdatedAt = game.UpdatedAt 
+                Title = common.Title
             };
         }
 
 
-        public static T ToDTO<T>(this CommonEntity game) where T:CommonDTO,new()
+        public static T ToDTO<T>(this CommonEntity common) where T:CommonDTO,new()
         {
             return new T
             {
-                Id = game.Id,
-                Title = game.Title!,
-                CreatedAt = game.CreatedAt,
-                UpdatedAt = game.UpdatedAt
+                Id = common.Id,
+                Title = common.Title!,
+                CreatedAt = common.CreatedAt,
+                UpdatedAt = common.UpdatedAt
             };
         }
     }
 }
-}
+

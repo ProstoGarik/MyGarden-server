@@ -1,5 +1,7 @@
 ﻿using GardenAPI.Entities.Events;
 using GardenAPI.Service.Common;
+using GardenAPI.Transfer.Event;
+using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenAPI.Controllers
@@ -21,9 +23,9 @@ namespace GardenAPI.Controllers
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком курсов.</returns>
         [HttpGet]
-        public async Task<ActionResult<List<Event>>> Get([FromQuery] List<int> ids)
+        public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] List<int> ids)
         {
-            return await DataEntityService.Get(DataEntityService.DataContext.Events, ids);
+            return Ok((await DataEntityService.Get(DataEntityService.DataContext.Events, ids)).Select(x=>x.ToDTO()));
         }
 
         /// <summary>
@@ -32,9 +34,9 @@ namespace GardenAPI.Controllers
         /// <param name="entities">Список курсов.</param>
         /// <returns>Результат операции.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] List<Event> entities)
+        public async Task<IActionResult> Post([FromBody] List<RequestEventDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Events, entities);
+            var status = await DataEntityService.Set(DataEntityService.DataContext.Events, entities.Select(x => x.ToEntity()).ToList());
 
             if (!status)
             {

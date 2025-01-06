@@ -1,6 +1,7 @@
 ﻿using GardenAPI.Data;
 using GardenAPI.Entities;
 using GardenAPI.Service.Plants;
+using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ namespace GardenAPI.Controllers
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком курсов.</returns>
         [HttpGet]
-        public async Task<ActionResult<List<Plant>>> Get([FromQuery] List<int> ids)
+        public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] List<int> ids)
         {
-            return await DataEntityService.Get(DataEntityService.DataContext.Plants, ids);
+            return Ok((await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x=>x.ToDTO()));
         }
 
         /// <summary>
@@ -34,9 +35,9 @@ namespace GardenAPI.Controllers
         /// <param name="entities">Список курсов.</param>
         /// <returns>Результат операции.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] List<Plant> entities)
+        public async Task<IActionResult> Post([FromBody] List<RequestPlantDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Plants, entities);
+            var status = await DataEntityService.Set(DataEntityService.DataContext.Plants, entities.Select(x=>x.ToEntity()).ToList());
 
             if (!status)
             {
