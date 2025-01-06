@@ -2,6 +2,11 @@
 
 # Этот этап используется при запуске из VS в быстром режиме (по умолчанию для конфигурации отладки)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+
+ENV DOTNET_NUGET_SIGNATURE_VERIFICATION=false
+ENV DOTNET_USE_POLLING_FILE_WATCHER=false
+ENV NUGET_XMLDOC_MODE=skip
+ENV NUGET_CERT_REVOCATION_MODE=offline
 USER app
 WORKDIR /app
 EXPOSE 8080

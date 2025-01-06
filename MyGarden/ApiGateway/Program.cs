@@ -8,7 +8,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddEnvironmentVariables();
 
 builder.Services.AddOcelot(builder.Configuration);
-builder.Services.AddCustomJwtAuthentication();
+builder.Services.AddCustomJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 await app.UseOcelot();

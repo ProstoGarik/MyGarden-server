@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGarden.Server", "MyGarden.Server\MyGarden.Server.csproj", "{A4D8465C-0530-445C-9064-F70EB42D272E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GardenAPI", "GardenAPI\GardenAPI.csproj", "{0D258762-9D7F-4B7B-9A13-C85189E6E36B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2D561E0F-029D-4B42-BCA3-F42646FB3543}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthenticationManager", "JwtAuthenticationManager\JwtAuthenticationManager.csproj", "{B959A4EB-17EC-4B18-8EC0-8635ED898183}"
 EndProject
@@ -21,24 +17,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\Ap
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "RecognizeAPI", "RecognizeAPI\RecognizeAPI.pyproj", "{BD1FB871-D3E2-4B54-A066-CB73E12C0B46}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E0750582-5FD3-4BFF-A6AB-04B45DB9ECA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A4D8465C-0530-445C-9064-F70EB42D272E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4D8465C-0530-445C-9064-F70EB42D272E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4D8465C-0530-445C-9064-F70EB42D272E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4D8465C-0530-445C-9064-F70EB42D272E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D258762-9D7F-4B7B-9A13-C85189E6E36B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D258762-9D7F-4B7B-9A13-C85189E6E36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D258762-9D7F-4B7B-9A13-C85189E6E36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D258762-9D7F-4B7B-9A13-C85189E6E36B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D561E0F-029D-4B42-BCA3-F42646FB3543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D561E0F-029D-4B42-BCA3-F42646FB3543}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D561E0F-029D-4B42-BCA3-F42646FB3543}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D561E0F-029D-4B42-BCA3-F42646FB3543}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B959A4EB-17EC-4B18-8EC0-8635ED898183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B959A4EB-17EC-4B18-8EC0-8635ED898183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B959A4EB-17EC-4B18-8EC0-8635ED898183}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,12 +45,15 @@ Global
 		{BD1FB871-D3E2-4B54-A066-CB73E12C0B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD1FB871-D3E2-4B54-A066-CB73E12C0B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD1FB871-D3E2-4B54-A066-CB73E12C0B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0750582-5FD3-4BFF-A6AB-04B45DB9ECA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0750582-5FD3-4BFF-A6AB-04B45DB9ECA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0750582-5FD3-4BFF-A6AB-04B45DB9ECA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0750582-5FD3-4BFF-A6AB-04B45DB9ECA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A4D8465C-0530-445C-9064-F70EB42D272E} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
 		{0D258762-9D7F-4B7B-9A13-C85189E6E36B} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
 		{B959A4EB-17EC-4B18-8EC0-8635ED898183} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}
 		{B8137F3B-9C7E-40F3-90B6-F804D2B5DF2E} = {CF83E2C6-919D-4EA6-8E38-60B1BC532C0B}

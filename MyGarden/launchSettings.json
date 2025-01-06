@@ -4,8 +4,12 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "gardenapi": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "gardenapi": "StartWithoutDebugging",
+        "apigateway": "StartWithoutDebugging",
+        "authapi": "StartWithoutDebugging",
+        "pgadmin": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging",
+        "recognizeapi": "StartWithoutDebugging"
       }
     }
   }

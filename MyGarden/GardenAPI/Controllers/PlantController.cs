@@ -19,21 +19,18 @@ namespace GardenAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult<IEnumerable<Plant>> GetPlants()
         {
             return _dbContext.Plants;
         }
 
         [HttpGet("{plantId:int}")]
-        [Authorize]
         public async Task<ActionResult<Plant>> GetPlantById(int plantId)
         {
             return Ok(await _dbContext.Plants.FindAsync(plantId));
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Create(Plant plant)
         {
             var roles = User.Claims.ToList();
@@ -52,7 +49,6 @@ namespace GardenAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Update(Plant plant)
         {
             _dbContext.Plants.Update(plant);
@@ -61,7 +57,6 @@ namespace GardenAPI.Controllers
         }
 
         [HttpDelete("{plantId:int}")]
-        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Delete(int plantId)
         {
             var plant = await _dbContext.Plants.FindAsync(plantId);

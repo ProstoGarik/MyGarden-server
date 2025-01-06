@@ -10,20 +10,6 @@ namespace GardenAPI.Data
         public PlantDbContext(DbContextOptions<PlantDbContext> dbContextOptions) : base(dbContextOptions)
         {
             Database.EnsureCreated();
-            //try
-            //{
-            //    var databaseCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
-            //    if (databaseCreator != null)
-            //    {
-            //        if (!databaseCreator.CanConnect()) databaseCreator.Create();
-            //        if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
-
-            //    }
-            //}
-            //catch (Exception e) 
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
         }
 
     }
