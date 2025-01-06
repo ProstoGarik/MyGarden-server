@@ -1,6 +1,6 @@
-from fastapi import FastAPI, UploadFile, File, Query
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, UploadFile, File, Query # type: ignore
+from fastapi.responses import JSONResponse # type: ignore
+from fastapi.middleware.cors import CORSMiddleware # type: ignore
 import shutil
 from recognizer.identifier import identify
 from data.plant_service import get_plants_data

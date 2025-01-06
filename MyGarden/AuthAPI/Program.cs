@@ -11,11 +11,8 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddUserManager<UserManager<User>>()
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddSignInManager<SignInManager<User>>();
-// Add services to the container.
 
 builder.Services.AddControllers();
-
-//builder.Services.AddCustomJwtAuthentication(builder.Configuration);
 var options = new JwtOptions();
 var section = builder.Configuration.GetSection("jwt");
 section.Bind(options);

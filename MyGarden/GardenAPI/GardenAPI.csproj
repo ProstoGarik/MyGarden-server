@@ -23,4 +23,10 @@
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Transfer\Event\" />
+    <Folder Include="Transfer\Plant\" />
+    <Folder Include="Transfer\Group\" />
+  </ItemGroup>
+
 </Project>

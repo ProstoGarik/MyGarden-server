@@ -144,6 +144,12 @@ services:
       - POSTGRES_DB=plantsdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
+    depends_on:
+        postgres_data:
+            condition: service_healthy
+            restart: true
+    ports:
+      - "8088:8080"
     networks:
       - backend
 
@@ -158,6 +164,10 @@ services:
       - POSTGRES_DB=identitydb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
+    depends_on:
+      postgres_data:
+        condition: service_healthy
+        restart: true
     networks:
       - backend
 
@@ -166,6 +176,8 @@ services:
     build:
       context: ./RecognizeAPI
       dockerfile: Dockerfile
+    ports:
+      - "8888:80"
     networks:
       - backend
 
@@ -193,7 +205,6 @@ networks:
     driver: bridge
   backend:
     driver: bridge
-    internal: true
     
 
 
