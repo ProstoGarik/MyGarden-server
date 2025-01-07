@@ -1,7 +1,6 @@
 ﻿using GardenAPI.Entities.Common;
 using GardenAPI.Service.Plants;
 using GardenAPI.Transfer.Common;
-using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenAPI.Controllers.Common

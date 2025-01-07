@@ -10,10 +10,10 @@
         public required int? StageId { get; init; }
 
         public int? ImageId { get; init; }
-        public int? RipeningPeriod{ get; init; }
+        public int? RipeningPeriod { get; init; }
         public string? Fertilization { get; init; }
         public string? Toxicity { get; init; }
-        public string? Replacing{ get; init; }
-        public string? Description{ get; init; }
+        public string? Replacing { get; init; }
+        public string? Description { get; init; }
     }
 }

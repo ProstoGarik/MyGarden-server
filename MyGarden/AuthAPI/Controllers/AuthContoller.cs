@@ -1,12 +1,7 @@
 ﻿using AuthAPI.Model;
 using AuthAPI.Model.Security;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Data;
-using System.Security.Principal;
-using System.Xml.Linq;
 
 namespace AuthAPI.Controllers
 {

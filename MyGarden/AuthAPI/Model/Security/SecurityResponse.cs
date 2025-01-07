@@ -1,6 +1,4 @@
-﻿using System.Security.Principal;
-
-namespace AuthAPI.Model.Security
+﻿namespace AuthAPI.Model.Security
 {
     public class SecurityResponse
     {

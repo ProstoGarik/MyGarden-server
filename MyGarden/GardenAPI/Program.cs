@@ -3,7 +3,6 @@ using GardenAPI.Entities.Common;
 using GardenAPI.Middleware;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;
-using Microsoft.EntityFrameworkCore;
 using MyGarden.Server.Entity.Common;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,7 +52,7 @@ void RegisterDataSources(IServiceCollection services)
 async Task InitializeDataSources(WebApplication application)
 {
     using var scope = application.Services.CreateScope();
-    var dataContext= scope.ServiceProvider.GetRequiredService<DataContext>();
+    var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
     await dataContext.TryInitializeAsync();
 
     await scope.ServiceProvider.GetRequiredService<GrowStageServive>().Set(dataContext.GrowStages, new List<GrowStage>{

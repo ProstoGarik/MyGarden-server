@@ -1,10 +1,6 @@
-﻿using GardenAPI.Data;
-using GardenAPI.Entities;
-using GardenAPI.Service.Plants;
+﻿using GardenAPI.Service.Plants;
 using GardenAPI.Transfer.Plant;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GardenAPI.Controllers
 {
@@ -27,7 +23,7 @@ namespace GardenAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] List<int> ids)
         {
-            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x=>x.ToDTO());
+            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x => x.ToDTO());
             //var plants = DataEntityService.DataContext.Plants.Include(p=>p.Group).Include(p => p.LightNeed).Include(p => p.WateringNeed).Include(p => p.Stage).Select(x=>x.ToDTO());
             return Ok(plants);
         }
@@ -40,7 +36,7 @@ namespace GardenAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestPlantDTO> entities)
         {
-            var status = await DataEntityService.Set(DataEntityService.DataContext.Plants, entities.Select(x=>x.ToEntity()).ToList());
+            var status = await DataEntityService.Set(DataEntityService.DataContext.Plants, entities.Select(x => x.ToEntity()).ToList());
 
             if (!status)
             {

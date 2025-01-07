@@ -1,20 +1,19 @@
 ﻿using GardenAPI.Entities.Common;
-using MyGarden.Server.Entity.Common;
 
 namespace GardenAPI.Transfer.Common
 {
     public static class EventMapper
     {
-        public static T ToEntity<T>(this RequestCommonDTO common) where T : CommonEntity,new()
+        public static T ToEntity<T>(this RequestCommonDTO common) where T : CommonEntity, new()
         {
-            return new T 
-            { 
+            return new T
+            {
                 Title = common.Title
             };
         }
 
 
-        public static T ToDTO<T>(this CommonEntity common) where T:CommonDTO,new()
+        public static T ToDTO<T>(this CommonEntity common) where T : CommonDTO, new()
         {
             return new T
             {

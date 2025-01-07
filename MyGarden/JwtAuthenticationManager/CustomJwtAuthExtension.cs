@@ -3,14 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using System.Security.Principal;
 using System.Text;
 
 namespace JwtAuthenticationManager
 {
     public static class CustomJwtAuthExtension
     {
-        public static void AddCustomJwtAuthentication(this IServiceCollection services,IConfiguration configuration)
+        public static void AddCustomJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var options = new JwtOptions();
             var section = configuration.GetSection("jwt");

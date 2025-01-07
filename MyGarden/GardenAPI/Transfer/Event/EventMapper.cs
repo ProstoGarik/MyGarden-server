@@ -1,15 +1,13 @@
-﻿using GardenAPI.Entities.Common;
-
-namespace GardenAPI.Transfer.Event
+﻿namespace GardenAPI.Transfer.Event
 {
     public static class EventMapper
     {
         public static Entities.Events.Event ToEntity(this RequestEventDTO request_event)
         {
             return new Entities.Events.Event
-            { 
-                PlantId = request_event.PlantId, 
-                Title = request_event.Title, 
+            {
+                PlantId = request_event.PlantId,
+                Title = request_event.Title,
                 Date = request_event.Date
             };
         }

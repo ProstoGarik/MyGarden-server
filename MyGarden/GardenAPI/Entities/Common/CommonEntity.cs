@@ -1,7 +1,5 @@
 ﻿using GardenAPI.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using MyGarden.Server.Entity.Common;
 
 namespace GardenAPI.Entities.Common
 {

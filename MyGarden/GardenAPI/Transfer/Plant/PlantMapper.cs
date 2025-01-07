@@ -1,6 +1,4 @@
-﻿using GardenAPI.Entities.Common;
-
-namespace GardenAPI.Transfer.Plant
+﻿namespace GardenAPI.Transfer.Plant
 {
     public static class PlantMapper
     {

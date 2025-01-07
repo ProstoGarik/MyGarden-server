@@ -2,9 +2,7 @@
 using GardenAPI.Entities.Common;
 using GardenAPI.Entities.Events;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MyGarden.Server.Entity.Common;
-using System.Linq;
 
 namespace GardenAPI.Data
 {
@@ -68,4 +66,4 @@ namespace GardenAPI.Data
 
 
 
-    
+

@@ -1,9 +1,8 @@
 using AuthAPI.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using AuthAPI.Model;
 using JwtAuthenticationManager;
-using System.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<User, IdentityRole>()
