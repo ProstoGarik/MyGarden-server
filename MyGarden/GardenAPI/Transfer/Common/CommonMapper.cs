@@ -5,7 +5,7 @@ namespace GardenAPI.Transfer.Common
 {
     public static class EventMapper
     {
-        public static T ToEntity<T>(this RequestCommonDTO common) where T : CommonEntity, new()
+        public static T ToEntity<T>(this RequestCommonDTO common) where T : CommonEntity,new()
         {
             return new T 
             { 

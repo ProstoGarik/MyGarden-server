@@ -62,10 +62,10 @@ namespace AuthAPI.Model
             }
 
             var userIdClaim = identity.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
-            return userIdClaim.Value ?? string.Empty;
+            return userIdClaim?.Value ?? string.Empty;
         }
 
-        private ClaimsPrincipal GetPrincipal(string token)
+        private ClaimsPrincipal? GetPrincipal(string token)
         {
             try
             {

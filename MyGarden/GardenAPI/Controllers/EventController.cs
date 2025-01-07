@@ -16,12 +16,12 @@ namespace GardenAPI.Controllers
         private EventService DataEntityService { get; } = dataEntityService;
 
         /// <summary>
-        ///     Получить список курсов.
-        ///     Если идентификаторы не указаны, возвращается список со всеми курсами.
-        ///     Иначе возвращается список с указанными курсами, либо пустой список.
+        ///     Получить список событий.
+        ///     Если идентификаторы не указаны, возвращается список со всеми событиями.
+        ///     Иначе возвращается список с указанными событиями, либо пустой список.
         /// </summary>
         /// <param name="ids">Список идентификаторов.</param>
-        /// <returns>Результат операции со списком курсов.</returns>
+        /// <returns>Результат операции со списком событий.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] List<int> ids)
         {
@@ -29,9 +29,9 @@ namespace GardenAPI.Controllers
         }
 
         /// <summary>
-        ///     Сохранить курсы.
+        ///     Сохранить события.
         /// </summary>
-        /// <param name="entities">Список курсов.</param>
+        /// <param name="entities">Список событий.</param>
         /// <returns>Результат операции.</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestEventDTO> entities)
@@ -47,7 +47,7 @@ namespace GardenAPI.Controllers
         }
 
         /// <summary>
-        ///     Удалить курсы.
+        ///     Удалить события.
         /// </summary>
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции.</returns>

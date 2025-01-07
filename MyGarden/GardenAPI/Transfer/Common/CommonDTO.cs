@@ -2,6 +2,6 @@
 {
     public record CommonDTO:IdentifiableEntityDTO
     {
-        public required string Title { get; init; }
+        public string? Title { get; init; }
     }
 }

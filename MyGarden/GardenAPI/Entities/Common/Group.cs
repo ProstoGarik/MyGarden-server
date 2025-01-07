@@ -1,9 +1,10 @@
 ﻿using GardenAPI.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MyGarden.Server.Entity.Common;
 
-namespace GardenAPI.Entities
+namespace GardenAPI.Entities.Common
 {
-    public class Group : IdentifiableEntity
+    public class Group : CommonEntity
     {
         /*                   __ _                       _   _
         *   ___ ___  _ __  / _(_) __ _ _   _ _ __ __ _| |_(_) ___  _ __
@@ -17,11 +18,9 @@ namespace GardenAPI.Entities
 
         #region Configuration
 
-        public const bool IsTitleRequired = true;
-        public const int TitleLengthMax = 256;
 
         /// <summary>
-        ///     Конфигурация модели <see cref="Subject" />.
+        ///     Конфигурация модели <see cref="Group" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
         internal class Configuration(ContextConfiguration configuration) : Configuration<Group>(configuration)
@@ -32,19 +31,11 @@ namespace GardenAPI.Entities
             /// <param name="builder">Набор интерфейсов настройки модели.</param>
             public override void Configure(EntityTypeBuilder<Group> builder)
             {
-                builder.Property(group => group.Title)
-                    .HasMaxLength(TitleLengthMax)
-                    .IsRequired(IsTitleRequired);
-
                 base.Configure(builder);
             }
         }
 
         #endregion
-
-
-        public string? Title { get; set; }
-
 
         public List<Plant> Plants { get; set; } = [];
     }

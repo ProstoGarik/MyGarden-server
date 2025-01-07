@@ -32,23 +32,19 @@ namespace GardenAPI.Entities.Common
         /// <typeparam name="T">
         ///     <see cref="CommonEntity" />
         /// </typeparam>
-        internal abstract class Configuration<T>(ContextConfiguration configuration) : IEntityTypeConfiguration<T>
+        internal new class Configuration<T>(ContextConfiguration configuration) : Entity.Configuration<T>(configuration)
             where T : CommonEntity
         {
-            /// <summary>
-            ///     Конфигурация базы данных.
-            /// </summary>
-            protected ContextConfiguration ContextConfiguration { get; } = configuration;
-
             /// <summary>
             ///     Задать конфигурацию для модели.
             /// </summary>
             /// <param name="builder">Набор интерфейсов настройки модели.</param>
-            public virtual void Configure(EntityTypeBuilder<T> builder)
+            public override void Configure(EntityTypeBuilder<T> builder)
             {
                 builder.Property(common => common.Title)
                     .HasMaxLength(TitleLengthMax)
                     .IsRequired(IsTitleRequired);
+                base.Configure(builder);
             }
         }
 
@@ -72,5 +68,6 @@ namespace GardenAPI.Entities.Common
         public string? Title { get; set; }
 
         #endregion
+
     }
 }

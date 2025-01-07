@@ -1,5 +1,5 @@
 using GardenAPI.Data;
-using GardenAPI.Entities;
+using GardenAPI.Entities.Common;
 using GardenAPI.Middleware;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;

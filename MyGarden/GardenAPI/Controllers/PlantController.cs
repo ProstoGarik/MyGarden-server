@@ -4,6 +4,7 @@ using GardenAPI.Service.Plants;
 using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GardenAPI.Controllers
 {
@@ -17,22 +18,24 @@ namespace GardenAPI.Controllers
         private PlantService DataEntityService { get; } = dataEntityService;
 
         /// <summary>
-        ///     Получить список курсов.
-        ///     Если идентификаторы не указаны, возвращается список со всеми курсами.
-        ///     Иначе возвращается список с указанными курсами, либо пустой список.
+        ///     Получить список растений.
+        ///     Если идентификаторы не указаны, возвращается список со всеми растениями.
+        ///     Иначе возвращается список с указанными растениями, либо пустой список.
         /// </summary>
         /// <param name="ids">Список идентификаторов.</param>
-        /// <returns>Результат операции со списком курсов.</returns>
+        /// <returns>Результат операции со списком растений.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] List<int> ids)
         {
-            return Ok((await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x=>x.ToDTO()));
+            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x=>x.ToDTO());
+            //var plants = DataEntityService.DataContext.Plants.Include(p=>p.Group).Include(p => p.LightNeed).Include(p => p.WateringNeed).Include(p => p.Stage).Select(x=>x.ToDTO());
+            return Ok(plants);
         }
 
         /// <summary>
-        ///     Сохранить курсы.
+        ///     Сохранить растения.
         /// </summary>
-        /// <param name="entities">Список курсов.</param>
+        /// <param name="entities">Список растений.</param>
         /// <returns>Результат операции.</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<RequestPlantDTO> entities)
@@ -48,7 +51,7 @@ namespace GardenAPI.Controllers
         }
 
         /// <summary>
-        ///     Удалить курсы.
+        ///     Удалить растения.
         /// </summary>
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции.</returns>

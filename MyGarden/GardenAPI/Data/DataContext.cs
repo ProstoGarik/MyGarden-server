@@ -1,4 +1,5 @@
 ﻿using GardenAPI.Entities;
+using GardenAPI.Entities.Common;
 using GardenAPI.Entities.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -44,7 +45,6 @@ namespace GardenAPI.Data
         /// <param name="modelBuilder">Набор интерфейсов настройки модели.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Безопасность.
             modelBuilder.ApplyConfiguration(new Group.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new Plant.Configuration(Configuration));
             modelBuilder.ApplyConfiguration(new Event.Configuration(Configuration));

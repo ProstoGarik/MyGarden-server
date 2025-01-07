@@ -1,4 +1,5 @@
 ﻿using GardenAPI.Data;
+using GardenAPI.Entities.Common;
 using GardenAPI.Entities.Events;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyGarden.Server.Entity.Common;

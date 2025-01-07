@@ -8,6 +8,7 @@ namespace GardenAPI.Transfer.Plant
         {
             return new Entities.Plant
             {
+                Id = request_plant.Id,
                 Title = request_plant.Title,
                 BiologyTitle = request_plant.BiologyTitle,
                 GroupId = request_plant.GroupId,

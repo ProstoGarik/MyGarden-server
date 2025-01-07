@@ -27,11 +27,11 @@ namespace JwtAuthenticationManager
                 {
                     OnTokenValidated = context =>
                     {
-                        var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
+                        var claimsIdentity = context.Principal?.Identity as ClaimsIdentity;
                         var roleClaim = claimsIdentity?.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Role);
                         if (roleClaim != null)
                         {
-                            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, roleClaim.Value));
+                            claimsIdentity?.AddClaim(new Claim(ClaimTypes.Role, roleClaim.Value));
                         }
 
                         return Task.CompletedTask;
