@@ -7,7 +7,7 @@ using MyGarden.Server.Entity.Common;
 namespace GardenAPI.Entities
 {
     [Index(nameof(UserId))]
-    public class Plant : IdentifiableEntity
+    public class Plant : IdentifiableEntity,IHasUserId
     {
 
         /*                   __ _                       _   _

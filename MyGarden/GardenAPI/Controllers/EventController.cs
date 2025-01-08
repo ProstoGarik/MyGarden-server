@@ -22,9 +22,9 @@ namespace GardenAPI.Controllers
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком событий.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] List<int> ids)
+        public async Task<ActionResult<IEnumerable<EventDTO>>> Get([FromQuery] string userId,[FromBody] List<int> ids)
         {
-            return Ok((await DataEntityService.Get(DataEntityService.DataContext.Events, ids)).Select(x => x.ToDTO()));
+            return Ok((await DataEntityService.Get(DataEntityService.DataContext.Events,userId, ids)).Select(x => x.ToDTO()));
         }
 
         /// <summary>

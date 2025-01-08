@@ -21,10 +21,9 @@ namespace GardenAPI.Controllers
         /// <param name="ids">Список идентификаторов.</param>
         /// <returns>Результат операции со списком растений.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] List<int> ids)
+        public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
         {
-            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants, ids)).Select(x => x.ToDTO());
-            //var plants = DataEntityService.DataContext.Plants.Include(p=>p.Group).Include(p => p.LightNeed).Include(p => p.WateringNeed).Include(p => p.Stage).Select(x=>x.ToDTO());
+            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants,userId, ids)).Select(x => x.ToDTO());
             return Ok(plants);
         }
 

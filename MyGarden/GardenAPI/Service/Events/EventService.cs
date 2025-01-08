@@ -2,7 +2,7 @@
 
 namespace GardenAPI.Service.Common
 {
-    public class EventService(DataContext dataContext) : DataEntityService(dataContext)
+    public class EventService(DataContext dataContext) : HasUserIdEntityService(dataContext)
     {
     }
 }

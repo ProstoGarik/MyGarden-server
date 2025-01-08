@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace GardenAPI.Entities
 {
     [Index(nameof(UserId))]
-    public class Group : CommonEntity
+    public class Group : CommonEntity, IHasUserId
     {
         /*                   __ _                       _   _
         *   ___ ___  _ __  / _(_) __ _ _   _ _ __ __ _| |_(_) ___  _ __
