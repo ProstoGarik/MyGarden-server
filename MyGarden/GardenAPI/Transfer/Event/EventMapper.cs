@@ -6,6 +6,7 @@
         {
             return new Entities.Events.Event
             {
+                UserId = request_event.UserId,
                 PlantId = request_event.PlantId,
                 Title = request_event.Title,
                 Date = request_event.Date
@@ -18,6 +19,7 @@
             return new EventDTO
             {
                 Id = game.Id,
+                UserId = game.UserId,
                 PlantId = game.PlantId,
                 Title = game.Title,
                 Date = game.Date,

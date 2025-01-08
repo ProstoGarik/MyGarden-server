@@ -5,6 +5,7 @@
         public required string? Title { get; init; }
         public required string? BiologyTitle { get; init; }
         public required int GroupId { get; init; }
+        public required string UserId { get; init; }
         public required int? WateringNeedId { get; init; }
         public required int? LightNeedId { get; init; }
         public required int? StageId { get; init; }

@@ -8,6 +8,7 @@ namespace GardenAPI.Transfer.Common
         {
             return new T
             {
+
                 Title = common.Title
             };
         }

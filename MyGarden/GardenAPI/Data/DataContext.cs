@@ -1,5 +1,4 @@
 ﻿using GardenAPI.Entities;
-using GardenAPI.Entities.Common;
 using GardenAPI.Entities.Events;
 using Microsoft.EntityFrameworkCore;
 using MyGarden.Server.Entity.Common;

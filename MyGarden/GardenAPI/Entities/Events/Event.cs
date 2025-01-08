@@ -1,8 +1,10 @@
 ﻿using GardenAPI.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GardenAPI.Entities.Events
 {
+    [Index(nameof(UserId))]
     public class Event : IdentifiableEntity
     {
         /*                   __ _                       _   _
@@ -18,6 +20,7 @@ namespace GardenAPI.Entities.Events
         #region Configuration
 
         public const int TitleLengthMax = 256;
+        public const bool IsUserIdRequired = true;
         public const bool IsTitleRequired = false;
         public const bool IsDateRequired = false;
         public const bool IsPlantIdRequired = true;
@@ -34,6 +37,8 @@ namespace GardenAPI.Entities.Events
             /// <param name="builder">Набор интерфейсов настройки модели.</param>
             public override void Configure(EntityTypeBuilder<Event> builder)
             {
+                builder.Property(ev => ev.UserId)
+                    .IsRequired(IsUserIdRequired);
                 builder.HasOne(nutrition => nutrition.Plant)
                     .WithMany(plant => plant.Events)
                     .HasForeignKey(nutrition => nutrition.PlantId)
@@ -71,6 +76,7 @@ namespace GardenAPI.Entities.Events
 
         #endregion
 
+        public required string UserId { get; set; }
         public required int PlantId { get; set; }
 
         public Plant? Plant { get; set; }

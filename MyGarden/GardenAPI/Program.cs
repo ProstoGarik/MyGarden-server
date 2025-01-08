@@ -1,5 +1,4 @@
 using GardenAPI.Data;
-using GardenAPI.Entities.Common;
 using GardenAPI.Middleware;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;
@@ -76,9 +75,5 @@ async Task InitializeDataSources(WebApplication application)
                 new WateringNeed{Id=3,Title="Высокий"}
             });
 
-    await scope.ServiceProvider.GetRequiredService<GroupService>().Set(dataContext.Groups, new List<Group>
-    {
-        new Group{Id = 1, Title="Default"}
-    });
 
 }

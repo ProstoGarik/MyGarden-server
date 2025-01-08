@@ -4,6 +4,8 @@
     {
         public int? Id { get; init; }
 
+        public required string UserId { get; init; }
+
         public required string Title { get; init; }
         public required int GroupId { get; init; }
         public required int WateringNeedId { get; init; }

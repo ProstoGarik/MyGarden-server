@@ -7,6 +7,7 @@
             return new Entities.Plant
             {
                 Id = request_plant.Id,
+                UserId = request_plant.UserId,
                 Title = request_plant.Title,
                 BiologyTitle = request_plant.BiologyTitle,
                 GroupId = request_plant.GroupId,
@@ -31,6 +32,7 @@
                 Title = plant.Title,
                 BiologyTitle = plant.BiologyTitle,
                 GroupId = plant.GroupId,
+                UserId = plant.UserId,
                 WateringNeedId = plant.WateringNeedId,
                 LightNeedId = plant.LightNeedId,
                 StageId = plant.StageId,

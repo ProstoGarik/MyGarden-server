@@ -1,8 +1,11 @@
 ﻿using GardenAPI.Data;
+using GardenAPI.Entities.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GardenAPI.Entities.Common
+namespace GardenAPI.Entities
 {
+    [Index(nameof(UserId))]
     public class Group : CommonEntity
     {
         /*                   __ _                       _   _
@@ -18,6 +21,8 @@ namespace GardenAPI.Entities.Common
         #region Configuration
 
 
+        public const bool IsUserIdRequired = true;
+
         /// <summary>
         ///     Конфигурация модели <see cref="Group" />.
         /// </summary>
@@ -30,12 +35,16 @@ namespace GardenAPI.Entities.Common
             /// <param name="builder">Набор интерфейсов настройки модели.</param>
             public override void Configure(EntityTypeBuilder<Group> builder)
             {
+                builder.Property(group => group.UserId)
+                    .IsRequired(IsUserIdRequired);
                 base.Configure(builder);
             }
         }
 
         #endregion
 
+
+        public required string UserId { get; set; }
         public List<Plant> Plants { get; set; } = [];
     }
 }

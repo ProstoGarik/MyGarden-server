@@ -1,11 +1,12 @@
 ﻿using GardenAPI.Data;
-using GardenAPI.Entities.Common;
 using GardenAPI.Entities.Events;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyGarden.Server.Entity.Common;
 
 namespace GardenAPI.Entities
 {
+    [Index(nameof(UserId))]
     public class Plant : IdentifiableEntity
     {
 
@@ -28,6 +29,7 @@ namespace GardenAPI.Entities
         public const int ReplacingLengthMax = 10240;
         public const int DescriptionLengthMax = 10240;
 
+        public const bool IsUserIdRequired = true;
         public const bool IsTitleRequired = true;
         public const bool IsBiologyTitleRequired = true;
         public const bool IsGroupIdRequired = true;
@@ -53,6 +55,9 @@ namespace GardenAPI.Entities
             /// <param name="builder">Набор интерфейсов настройки модели.</param>
             public override void Configure(EntityTypeBuilder<Plant> builder)
             {
+                builder.Property(plant => plant.UserId)
+                    .IsRequired(IsUserIdRequired);
+
                 builder.HasOne(plant => plant.WateringNeed)
                     .WithMany(wateringNeed => wateringNeed.Plants)
                     .HasForeignKey(plant => plant.WateringNeedId)
@@ -110,7 +115,7 @@ namespace GardenAPI.Entities
 
         #endregion
 
-
+        public required string UserId { get; set; }
         public required int GroupId { get; set; }
         public int? WateringNeedId { get; set; }
         public int? LightNeedId { get; set; }
