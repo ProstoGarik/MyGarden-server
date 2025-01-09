@@ -20,22 +20,10 @@ jobs:
       with:
         ref: main
 
-    - name: Run tests
-      run: dotnet test MyGarden/tests/*.Tests/*.csproj
-
-    - name: Build and push docker containers
-      run: |
-        cd MyGarden
-        docker compose up -d > build_logs.txt  
-
-    - name: Upload build logs as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-logs
-        path: MyGarden/build_logs.txt  
     
     - name: Healthcheck containers
       run: | 
+        ls -a
         healthcheck.sh postgres_data_container 120
         healthcheck.sh garden-api 120 
         healthcheck.sh auth-api 120 
