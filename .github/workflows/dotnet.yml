@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Make the script files executable
         run: | 
+          pwd
+          ls -a
           cd MyGarden
           chmod +x healthcheck.sh 
 
@@ -58,6 +60,7 @@ jobs:
     steps:
       - name: Healthcheck containers
         run: | 
+          ls -a
           cd MyGarden
           ./healthcheck.sh postgres_data_container 120 > healthcheck_logs.txt
           ./healthcheck.sh postgres_identity_container 120 >> healthcheck_logs.txt
