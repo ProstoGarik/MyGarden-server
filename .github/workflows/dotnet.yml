@@ -11,66 +11,46 @@ on:
     branches: [ "main" ]    
 
 jobs:
-  checkout:
+  build_and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code from repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
+    - name: Get code from repository
+      uses: actions/checkout@v4
+      with:
+        ref: main
+    - name: Make the script files executable
+      run: | 
+        cd MyGarden
+        chmod +x healthcheck.sh 
+    - name: Run tests
+      run: dotnet test MyGarden/tests/*.Tests/*.csproj > test_logs.txt 
+    - name: Upload test logs as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-logs
+        path: MyGarden/test_logs.txt
 
-  build:
-    runs-on: ubuntu-latest
-    needs: checkout
-    steps:
-      - name: Make the script files executable
-        run: | 
-          pwd
-          ls -a
-          cd MyGarden
-          chmod +x healthcheck.sh 
+    - name: Build and push docker containers
+      run: |
+        cd MyGarden
+        docker compose up -d > build_logs.txt  
+    - name: Upload build logs as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-logs
+        path: MyGarden/build_logs.txt  
 
-      - name: Build and push docker containers
-        run: |
-          cd MyGarden
-          docker compose up -d > build_logs.txt  
-
-      - name: Upload build logs as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-logs
-          path: MyGarden/build_logs.txt  
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Run tests
-        run: dotnet test MyGarden/tests/*.Tests/*.csproj > test_logs.txt
-
-      - name: Upload test logs as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-logs
-          path: test_logs.txt
-
-  healthcheck:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Healthcheck containers
-        run: | 
-          ls -a
-          cd MyGarden
-          ./healthcheck.sh postgres_data_container 120 > healthcheck_logs.txt
-          ./healthcheck.sh postgres_identity_container 120 >> healthcheck_logs.txt
-          ./healthcheck.sh garden-api 120 >> healthcheck_logs.txt 
-          ./healthcheck.sh auth-api 120 >> healthcheck_logs.txt
-          ./healthcheck.sh recognize-api 120 >> healthcheck_logs.txt 
-          ./healthcheck.sh api-gateway 120 >> healthcheck_logs.txt 
-
-      - name: Upload healthcheck logs as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: healthcheck-logs
-          path: healthcheck_logs.txt
+    - name: Healthcheck containers
+      run: | 
+        cd MyGarden
+        ./healthcheck.sh postgres_data_container 120 > healthcheck_data_logs.txt 
+        ./healthcheck.sh postgres_identity_container 120 >> healthcheck_data_logs.txt 
+        ./healthcheck.sh garden-api 120 >> healthcheck_data_logs.txt 
+        ./healthcheck.sh auth-api 120 >> healthcheck_data_logs.txt 
+        ./healthcheck.sh recognize-api 120 >> healthcheck_data_logs.txt 
+        ./healthcheck.sh api-gateway 120 >> healthcheck_data_logs.txt
+    - name: Upload healthcheck logs as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: healthcheck-logs
+        path: MyGarden/healthcheck_data_logs.txt
