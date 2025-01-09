@@ -21,13 +21,16 @@ jobs:
         ref: main
 
     - name: Run tests
-      run: dotnet test tests/*.Tests/*.csproj
+      run: dotnet test MyGarden/tests/*.Tests/*.csproj
 
     - name: Build and push docker containers
-      run: docker-compose up -d
+      run: |
+        cd MyGarden
+        docker-compose up -d
     
     - name: Healthcheck containers
       run: | 
+        cd MyGarden
         healthcheck.sh postgres_data_container 120
         healthcheck.sh garden-api 120 
         healthcheck.sh auth-api 120 
