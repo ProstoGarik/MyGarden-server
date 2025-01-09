@@ -152,6 +152,11 @@ services:
       - "8088:8080"
     networks:
       - backend
+    healthcheck:
+      test: "curl -f localhost:8080"
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   authapi:
     container_name: auth-api
@@ -170,6 +175,11 @@ services:
         restart: true
     networks:
       - backend
+    healthcheck:
+      test: "curl -f localhost:8080"
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   recognizeapi:
     container_name: recognize-api
@@ -180,6 +190,11 @@ services:
       - "8888:80"
     networks:
       - backend
+    healthcheck:
+      test: "curl -f localhost:80"
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   apigateway:
     container_name: api-gateway
@@ -192,6 +207,11 @@ services:
     networks:
       - backend
       - gate
+    healthcheck:
+      test: "curl -f localhost:8080"
+      interval: 5s
+      timeout: 5s
+      retries: 20
       
 volumes:
   identity-data:

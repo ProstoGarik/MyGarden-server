@@ -3,24 +3,34 @@ name: .NET
 
 on:
   push:
+    paths:
+    - 'MyGarden/src/**'
+    - 'MyGarden/tests/GradenAPI.Tests'
+    - 'MyGarden/**'
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]    
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+    - name: Get code from repository
+      uses: actions/checkout@v4
       with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+        ref: main
+
+    - name: Run tests
+      run: dotnet test tests/*.Tests/*.csproj
+
+    - name: Build and push docker containers
+      run: docker-compose up -d
+    
+    - name: Healthcheck containers
+      run: | 
+        healthcheck.sh postgres_data_container 120
+        healthcheck.sh garden-api 120 
+        healthcheck.sh auth-api 120 
+        healthcheck.sh recognize-api 120 
+        healthcheck.sh api-gateway 120 
+
