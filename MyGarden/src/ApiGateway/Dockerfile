@@ -1,13 +1,17 @@
 # См. статью по ссылке https://aka.ms/customizecontainer, чтобы узнать как настроить контейнер отладки и как Visual Studio использует этот Dockerfile для создания образов для ускорения отладки.
 
 # Этот этап используется при запуске из VS в быстром режиме (по умолчанию для конфигурации отладки)
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
 ENV DOTNET_NUGET_SIGNATURE_VERIFICATION=false
 ENV DOTNET_USE_POLLING_FILE_WATCHER=false
 ENV NUGET_XMLDOC_MODE=skip
 ENV NUGET_CERT_REVOCATION_MODE=offline
-USER app
+USER root
 WORKDIR /app
+
+RUN ["apk","update"] 
+RUN ["apk","add","curl"]
+USER app
 EXPOSE 8080
 EXPOSE 8081
 

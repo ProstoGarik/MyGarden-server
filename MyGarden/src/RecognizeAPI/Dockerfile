@@ -1,9 +1,8 @@
 FROM python:3.12-slim
 
-# Установка Tesseract
-RUN apt-get update && apt-get -y install\
-    tesseract-ocr \
-    && apt-get install tesseract-ocr-rus \
+RUN apt-get update && apt-get -y install tesseract-ocr \
+    && apt-get -y install tesseract-ocr-rus \
+    && apt-get -y install curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

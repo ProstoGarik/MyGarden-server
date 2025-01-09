@@ -81,8 +81,21 @@
         }
       ],
       "DownstreamPathTemplate": "/api/auth/validate"
+    },
+    {
+      "UpstreamPathTemplate": "/healthz",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/health",
+      "DownstreamScheme": "http"
     }
   ],
   "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8080"
   }
 }
