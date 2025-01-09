@@ -23,6 +23,7 @@ jobs:
     
     - name: Healthcheck containers
       run: | 
+        cd MyGarden
         ls -a
         healthcheck.sh postgres_data_container 120
         healthcheck.sh garden-api 120 
