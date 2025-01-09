@@ -22,7 +22,7 @@ application.UseMiddleware<ExceptionHandler>();
 application.UseSwagger();
 application.UseSwaggerUI();
 application.MapControllers();
-app.MapHealthChecks("/health");
+application.MapHealthChecks("/health");
 application.UseCors();
 
 await InitializeDataSources(application);
