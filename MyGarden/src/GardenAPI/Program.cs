@@ -11,6 +11,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 RegisterCoreServices(builder.Services);
 RegisterDataSources(builder.Services);
@@ -21,6 +22,7 @@ application.UseMiddleware<ExceptionHandler>();
 application.UseSwagger();
 application.UseSwaggerUI();
 application.MapControllers();
+app.MapHealthChecks("/health");
 application.UseCors();
 
 await InitializeDataSources(application);

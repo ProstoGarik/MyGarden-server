@@ -9,11 +9,13 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 
 builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddCustomJwtAuthentication(builder.Configuration);
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 await app.UseOcelot();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapHealthChecks("/health");
 
 app.Run();

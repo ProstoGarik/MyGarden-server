@@ -153,10 +153,11 @@ services:
     networks:
       - backend
     healthcheck:
-      test: "curl -f localhost:8080"
-      interval: 5s
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 2s
       timeout: 5s
-      retries: 20
+      retries: 3
+      start_period: 5s
 
   authapi:
     container_name: auth-api
@@ -176,10 +177,11 @@ services:
     networks:
       - backend
     healthcheck:
-      test: "curl -f localhost:8080"
-      interval: 5s
+      test: curl --fail http://localhost:8080/health || exit 1
+      interval: 2s
       timeout: 5s
-      retries: 20
+      retries: 3
+      start_period: 5s
 
   recognizeapi:
     container_name: recognize-api
@@ -191,10 +193,11 @@ services:
     networks:
       - backend
     healthcheck:
-      test: "curl -f localhost:80"
-      interval: 5s
+      test: curl --fail http://localhost:80/health || exit 1
+      interval: 2s
       timeout: 5s
-      retries: 20
+      retries: 3
+      start_period: 5s
 
   apigateway:
     container_name: api-gateway

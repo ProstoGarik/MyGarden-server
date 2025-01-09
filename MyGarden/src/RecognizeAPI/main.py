@@ -37,3 +37,6 @@ async def search_plant(name: str = Query(...)):
     result=[x for x in plants_data if name.lower() in ((x['title']).lower())]
     return JSONResponse(content=result)
     
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}

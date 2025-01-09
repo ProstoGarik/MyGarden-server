@@ -40,6 +40,7 @@ jobs:
       run: | 
         cd MyGarden
         ./healthcheck.sh postgres_data_container 120
+        ./healthcheck.sh postgres_identity_container 120
         ./healthcheck.sh garden-api 120 
         ./healthcheck.sh auth-api 120 
         ./healthcheck.sh recognize-api 120 

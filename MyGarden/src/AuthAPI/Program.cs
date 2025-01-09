@@ -3,6 +3,7 @@ using AuthAPI.Model;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -19,6 +20,7 @@ builder.Services.AddSingleton(options);
 builder.Services.AddSingleton<JwtTokenHandler>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("POSTGRES_DB");
@@ -39,6 +41,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHealthChecks("/health");
 app.MapControllers();
 
 app.Run();
