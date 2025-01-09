@@ -16,11 +16,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthAPI/AuthAPI.csproj", "AuthAPI/"]
-COPY ["JwtAuthenticationManager/JwtAuthenticationManager.csproj", "JwtAuthenticationManager/"]
-RUN dotnet restore "./AuthAPI/AuthAPI.csproj"
+COPY ["src/AuthAPI/AuthAPI.csproj", "src/AuthAPI/"]
+COPY ["src/JwtAuthenticationManager/JwtAuthenticationManager.csproj", "src/JwtAuthenticationManager/"]
+RUN dotnet restore "./src/AuthAPI/AuthAPI.csproj"
 COPY . .
-WORKDIR "/src/AuthAPI"
+WORKDIR "/src/src/AuthAPI"
 RUN dotnet build "./AuthAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап

@@ -21,6 +21,10 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".dockerignore">
+      <SubType>Content</SubType>
+      <DependentUpon>Dockerfile</DependentUpon>
+    </Content>
     <Content Include="catalogues\ailita\links\error_flower_pages.txt" />
     <Content Include="catalogues\ailita\links\error_plant_pages.txt" />
     <Content Include="catalogues\ailita\links\flower_links_data.txt" />
@@ -39,7 +43,7 @@
     <Content Include="catalogues\poisk\links\error_plant_pages.txt" />
     <Content Include="catalogues\poisk\links\flower_links_data.txt" />
     <Content Include="catalogues\poisk\links\plant_links_data.txt" />
-    <Content Include="Dockerfile" />
+    <None Include="Dockerfile" />
     <Content Include="requirements.txt" />
     <Content Include="uploads\amarant_sovershenstvo.jpg" />
   </ItemGroup>

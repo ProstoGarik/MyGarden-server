@@ -2,7 +2,6 @@
 
 # Этот этап используется при запуске из VS в быстром режиме (по умолчанию для конфигурации отладки)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-
 ENV DOTNET_NUGET_SIGNATURE_VERIFICATION=false
 ENV DOTNET_USE_POLLING_FILE_WATCHER=false
 ENV NUGET_XMLDOC_MODE=skip
@@ -17,11 +16,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["GardenAPI/GardenAPI.csproj", "GardenAPI/"]
-COPY ["JwtAuthenticationManager/JwtAuthenticationManager.csproj", "JwtAuthenticationManager/"]
-RUN dotnet restore "./GardenAPI/GardenAPI.csproj"
+COPY ["src/GardenAPI/GardenAPI.csproj", "src/GardenAPI/"]
+RUN dotnet restore "./src/GardenAPI/GardenAPI.csproj"
 COPY . .
-WORKDIR "/src/GardenAPI"
+WORKDIR "/src/src/GardenAPI"
 RUN dotnet build "./GardenAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап

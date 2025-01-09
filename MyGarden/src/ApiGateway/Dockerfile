@@ -2,7 +2,6 @@
 
 # Этот этап используется при запуске из VS в быстром режиме (по умолчанию для конфигурации отладки)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-
 ENV DOTNET_NUGET_SIGNATURE_VERIFICATION=false
 ENV DOTNET_USE_POLLING_FILE_WATCHER=false
 ENV NUGET_XMLDOC_MODE=skip
@@ -10,17 +9,17 @@ ENV NUGET_CERT_REVOCATION_MODE=offline
 USER app
 WORKDIR /app
 EXPOSE 8080
-
+EXPOSE 8081
 
 # Этот этап используется для сборки проекта службы
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ApiGateway/ApiGateway.csproj", "ApiGateway/"]
-COPY ["JwtAuthenticationManager/JwtAuthenticationManager.csproj", "JwtAuthenticationManager/"]
-RUN dotnet restore "./ApiGateway/ApiGateway.csproj"
+COPY ["src/ApiGateway/ApiGateway.csproj", "src/ApiGateway/"]
+COPY ["src/JwtAuthenticationManager/JwtAuthenticationManager.csproj", "src/JwtAuthenticationManager/"]
+RUN dotnet restore "./src/ApiGateway/ApiGateway.csproj"
 COPY . .
-WORKDIR "/src/ApiGateway"
+WORKDIR "/src/src/ApiGateway"
 RUN dotnet build "./ApiGateway.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап

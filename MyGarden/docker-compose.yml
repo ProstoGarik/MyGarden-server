@@ -138,7 +138,7 @@ services:
     image: ${DOCKER_REGISTRY-}gardenapi
     build:
       context: .
-      dockerfile: GardenAPI/Dockerfile
+      dockerfile: src/GardenAPI/Dockerfile
     environment:
       - DB_HOST=postgres_data
       - POSTGRES_DB=plantsdb
@@ -163,7 +163,7 @@ services:
     image: ${DOCKER_REGISTRY-}authapi
     build:
       context: .
-      dockerfile: AuthAPI/Dockerfile
+      dockerfile: src/AuthAPI/Dockerfile
     environment:
       - DB_HOST=postgres_identity
       - POSTGRES_DB=identitydb
@@ -184,8 +184,8 @@ services:
   recognizeapi:
     container_name: recognize-api
     build:
-      context: ./RecognizeAPI
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: src/RecognizeAPI/Dockerfile
     ports:
       - "8888:80"
     networks:
@@ -201,7 +201,7 @@ services:
     image: ${DOCKER_REGISTRY-}apigateway
     build:
       context: .
-      dockerfile: ApiGateway/Dockerfile
+      dockerfile: src/ApiGateway/Dockerfile
     ports:
       - "8081:8080"
     networks:

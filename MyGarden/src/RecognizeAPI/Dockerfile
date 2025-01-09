@@ -9,10 +9,11 @@ RUN apt-get update && apt-get -y install\
 
 
 WORKDIR /app
-COPY . .
-
-# /usr/local/share/tessdata
-RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
+
+WORKDIR /src
+COPY ["src/RecognizeAPI/", "./"]
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
