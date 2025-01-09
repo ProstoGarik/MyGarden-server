@@ -26,7 +26,7 @@ jobs:
     - name: Build and push docker containers
       run: |
         cd MyGarden
-        docker-compose up -d > build_logs.txt 2>&1  
+        docker-compose up -d > build_logs.txt  
 
     - name: Upload build logs as artifact
       uses: actions/upload-artifact@v3
