@@ -2,6 +2,6 @@
 {
     public class RegisterRequest : SecurityRequest
     {
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = "";
     }
 }

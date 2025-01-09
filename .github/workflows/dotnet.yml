@@ -11,7 +11,7 @@ on:
     branches: [ "main" ]    
 
 jobs:
-  build_and-test:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
     - name: Get code from repository
@@ -23,7 +23,7 @@ jobs:
         cd MyGarden
         chmod +x healthcheck.sh 
     - name: Run tests
-      run: dotnet test MyGarden/tests/*.Tests/*.csproj > test_logs.txt 
+      run: dotnet test MyGarden/tests/*.Tests/*.csproj > MyGarden/test_logs.txt 
     - name: Upload test logs as artifact
       uses: actions/upload-artifact@v3
       with:
