@@ -1,9 +1,9 @@
 ﻿using GardenAPI.Data;
-using Microsoft.EntityFrameworkCore;
+using GardenAPI.Entities;
 
 namespace GardenAPI.Service.Plants
 {
-    public class PlantService(DataContext dataContext) : HasUserIdEntityService(dataContext)
+    public class PlantService(DataContext dataContext) : HasUserIdEntityService<Plant>(dataContext)
     {
     }
 }

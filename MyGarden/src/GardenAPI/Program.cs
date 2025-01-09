@@ -75,5 +75,10 @@ async Task InitializeDataSources(WebApplication application)
                 new WateringNeed{Id=3,Title="Высокий"}
             });
 
+    await scope.ServiceProvider.GetRequiredService<GroupService>().Set(dataContext.Groups, new List<GardenAPI.Entities.Group>
+    {
+        new GardenAPI.Entities.Group{Id=0,UserId = "default",Title="default"},
+    });
+
 
 }

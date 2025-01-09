@@ -29,7 +29,7 @@ namespace MyGarden.Server.Entity.Common
         ///     Конфигурация модели <see cref="WateringNeed" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<WateringNeed>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<WateringNeed>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.

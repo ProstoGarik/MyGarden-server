@@ -34,13 +34,13 @@ namespace GardenAPI.Entities
         /// <typeparam name="T">
         ///     <see cref="Entity" />
         /// </typeparam>
-        internal abstract class Configuration<T>(ContextConfiguration configuration) : IEntityTypeConfiguration<T>
+        internal abstract class Configuration<T>(BaseConfiguration configuration) : IEntityTypeConfiguration<T>
             where T : Entity
         {
             /// <summary>
             ///     Конфигурация базы данных.
             /// </summary>
-            protected ContextConfiguration ContextConfiguration { get; } = configuration;
+            protected BaseConfiguration ContextConfiguration { get; } = configuration;
 
             /// <summary>
             ///     Задать конфигурацию для модели.

@@ -27,7 +27,7 @@ namespace GardenAPI.Entities
         ///     Конфигурация модели <see cref="Group" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<Group>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<Group>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.

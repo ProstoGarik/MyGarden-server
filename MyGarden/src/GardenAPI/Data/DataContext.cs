@@ -5,9 +5,9 @@ using MyGarden.Server.Entity.Common;
 
 namespace GardenAPI.Data
 {
-    public class DataContext(ContextConfiguration configuration) : DbContext
+    public class DataContext(BaseConfiguration configuration) : DbContext
     {
-        private ContextConfiguration Configuration { get; } = configuration;
+        private BaseConfiguration Configuration { get; } = configuration;
 
         /// <summary>
         ///     Обработать настройку сессии.

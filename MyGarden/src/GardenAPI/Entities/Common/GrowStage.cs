@@ -31,7 +31,7 @@ namespace MyGarden.Server.Entity.Common
         ///     Конфигурация модели <see cref="GrowStage" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<GrowStage>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<GrowStage>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.

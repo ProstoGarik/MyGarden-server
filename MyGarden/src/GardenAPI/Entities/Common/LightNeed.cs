@@ -28,7 +28,7 @@ namespace MyGarden.Server.Entity.Common
         ///     Конфигурация модели <see cref="LightNeed" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<LightNeed>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<LightNeed>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.

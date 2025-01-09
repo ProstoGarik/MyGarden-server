@@ -30,7 +30,7 @@ namespace GardenAPI.Entities.Common
         /// <typeparam name="T">
         ///     <see cref="CommonEntity" />
         /// </typeparam>
-        internal new class Configuration<T>(ContextConfiguration configuration) : Entity.Configuration<T>(configuration)
+        internal new class Configuration<T>(BaseConfiguration configuration) : Entity.Configuration<T>(configuration)
             where T : CommonEntity
         {
             /// <summary>

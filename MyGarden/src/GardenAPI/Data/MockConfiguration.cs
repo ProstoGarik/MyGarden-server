@@ -3,16 +3,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace GardenAPI.Data
 {
-
-    /// <summary>
-    ///     Конфигурация контекста для работы с базой данных.
-    /// </summary>
-    /// <param name="connectionString">Строка подключения к базе данных.</param>
-    /// <param name="isDebugMode">Статус конфигурации для разработки.</param>
-    public class ContextConfiguration(string connectionString) : BaseConfiguration
+    public class MockConfiguration : BaseConfiguration
     {
-        public string ConnectionString { get; } = connectionString;
-        private bool IsDebugMode { get; } = false;
 
         /// <summary>
         ///     Тип полей даты и времени в базе данных.
@@ -31,13 +23,9 @@ namespace GardenAPI.Data
         /// <param name="optionsBuilder">Набор интерфейсов настройки сессии.</param>
         public override void ConfigureContext(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(ConnectionString);
-
+            object value = optionsBuilder.UseInMemoryDatabase(databaseName: "TestDatabase");
             optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.ConfigureWarnings(builder => builder.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
-
-            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
         }
-
     }
 }

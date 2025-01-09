@@ -1,4 +1,6 @@
-﻿using GardenAPI.Service.Plants;
+﻿using GardenAPI.Entities;
+using GardenAPI.Service;
+using GardenAPI.Service.Plants;
 using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,12 +8,12 @@ namespace GardenAPI.Controllers
 {
     [Route("api/plant")]
     [ApiController]
-    public class PlantController(PlantService dataEntityService) : ControllerBase
+    public class PlantController(IHasUserIdService<Plant> dataEntityService) : ControllerBase
     {
         /// <summary>
         ///     Сервис моделей.
         /// </summary>
-        private PlantService DataEntityService { get; } = dataEntityService;
+        private PlantService DataEntityService { get; } = (PlantService)dataEntityService;
 
         /// <summary>
         ///     Получить список растений.
@@ -23,7 +25,7 @@ namespace GardenAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlantDTO>>> Get([FromQuery] string userId, [FromBody] List<int> ids)
         {
-            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants,userId, ids)).Select(x => x.ToDTO());
+            var plants = (await DataEntityService.Get(DataEntityService.DataContext.Plants, userId, ids)).Select(x => x.ToDTO()).ToList();
             return Ok(plants);
         }
 

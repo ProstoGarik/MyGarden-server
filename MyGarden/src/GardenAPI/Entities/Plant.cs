@@ -7,7 +7,7 @@ using MyGarden.Server.Entity.Common;
 namespace GardenAPI.Entities
 {
     [Index(nameof(UserId))]
-    public class Plant : IdentifiableEntity,IHasUserId
+    public class Plant : IdentifiableEntity, IHasUserId
     {
 
         /*                   __ _                       _   _
@@ -47,7 +47,7 @@ namespace GardenAPI.Entities
         ///     Конфигурация модели <see cref="Subject" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<Plant>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<Plant>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.

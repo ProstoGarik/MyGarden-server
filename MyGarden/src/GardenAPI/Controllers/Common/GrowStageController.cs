@@ -24,7 +24,7 @@ namespace GardenAPI.Controllers.Common
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GrowStageDTO>>> Get([FromQuery] List<int> ids)
         {
-            var groups = (await DataEntityService.Get(DataEntityService.DataContext.GrowStages, ids)).Select(x => x.ToDTO<GrowStageDTO>());
+            var groups = (await DataEntityService.Get(DataEntityService.DataContext.GrowStages, ids)).Select(x => x.ToDTO<GrowStageDTO>()).ToList();
             return Ok(groups);
         }
 

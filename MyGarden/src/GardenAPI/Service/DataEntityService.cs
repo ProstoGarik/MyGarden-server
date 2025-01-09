@@ -7,7 +7,7 @@ namespace GardenAPI.Service
     ///     Сервис для работы с моделями.
     /// </summary>
     /// <param name="dataContext">Контекст данных.</param>
-    public class DataEntityService(DataContext dataContext)
+    public class DataEntityService<TSource>(DataContext dataContext) : IDataEntityService<TSource> where TSource : IdentifiableEntity
     {
         /// <summary>
         ///    Контекст данных.
@@ -21,7 +21,7 @@ namespace GardenAPI.Service
         /// <param name="ids">Список идентификаторов.</param>
         /// <typeparam name="TSource">Тип модели.</typeparam>
         /// <returns>Список моделей.</returns>
-        public async Task<List<TSource>> Get<TSource>(DbSet<TSource> dbSet, List<int> ids) where TSource : IdentifiableEntity
+        public async Task<IEnumerable<TSource>> Get(DbSet<TSource> dbSet, List<int> ids)
         {
             if (ids.Count <= 0)
             {
@@ -38,7 +38,7 @@ namespace GardenAPI.Service
         /// <param name="entities">Список моделей.</param>
         /// <typeparam name="TSource">Тип модели.</typeparam>
         /// <returns>Статус операции.</returns>
-        public async Task<bool> Set<TSource>(DbSet<TSource> dbSet, List<TSource> entities) where TSource : IdentifiableEntity
+        public async Task<bool> Set(DbSet<TSource> dbSet, List<TSource> entities)
         {
             if (entities.Count <= 0)
             {
@@ -80,7 +80,7 @@ namespace GardenAPI.Service
         /// <param name="ids">Список идентификаторов.</param>
         /// <typeparam name="TSource">Тип модели.</typeparam>
         /// <returns>Статус операции.</returns>
-        public async Task<bool> Remove<TSource>(DbSet<TSource> dbSet, List<int> ids) where TSource : IdentifiableEntity
+        public async Task<bool> Remove(DbSet<TSource> dbSet, List<int> ids)
         {
             if (ids.Count <= 0)
             {
@@ -97,7 +97,7 @@ namespace GardenAPI.Service
         /// </summary>
         /// <typeparam name="TSource">Тип модели.</typeparam>
         /// <param name="entities">Список моделей.</param>
-        private void DetachTrackedEntities<TSource>(List<TSource> entities) where TSource : IdentifiableEntity
+        private void DetachTrackedEntities(List<TSource> entities)
         {
             var entityIds = entities.Select(entity => entity.Id.GetValueOrDefault()).ToList();
 
@@ -113,5 +113,6 @@ namespace GardenAPI.Service
                 }
             }
         }
+
     }
 }

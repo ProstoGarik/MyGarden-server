@@ -29,7 +29,7 @@ namespace GardenAPI.Entities.Events
         ///     Конфигурация модели <see cref="Subject" />.
         /// </summary>
         /// <param name="configuration">Конфигурация базы данных.</param>
-        internal class Configuration(ContextConfiguration configuration) : Configuration<Event>(configuration)
+        internal class Configuration(BaseConfiguration configuration) : Configuration<Event>(configuration)
         {
             /// <summary>
             ///     Задать конфигурацию для модели.
