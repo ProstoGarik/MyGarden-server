@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using UserGardenAPI.Model;
 
 public class GardenRepository : IGardenRepository

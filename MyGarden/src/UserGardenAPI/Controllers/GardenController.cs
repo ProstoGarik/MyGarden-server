@@ -45,12 +45,12 @@ namespace UserGardenAPI.Controllers
         }
 
         [HttpPut("{gardenId}")]
-        public async Task<IActionResult> UpdateGarden(string gardenId, [FromBody] Garden garden) => 
+        public async Task<IActionResult> UpdateGarden(string gardenId, [FromBody] Garden garden) =>
             (await _gardenRepository.UpdateGarden(gardenId, garden)).ModifiedCount > 0 ? Ok() : NotFound();
 
 
         [HttpDelete("{gardenId}")]
-        public async Task<IActionResult> DeleteGarden(string gardenId) => 
+        public async Task<IActionResult> DeleteGarden(string gardenId) =>
             (await _gardenRepository.DeleteGarden(gardenId)).DeletedCount > 0 ? Ok() : NotFound();
 
 

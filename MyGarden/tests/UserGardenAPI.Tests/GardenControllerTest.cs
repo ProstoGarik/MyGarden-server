@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Mongo2Go;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Moq;
-using NUnit.Framework.Constraints;
 using UserGardenAPI.Controllers;
 using UserGardenAPI.Model;
 
@@ -77,7 +75,7 @@ namespace UserGardenAPI.Tests
             var result = await _controller.GetGardenByUserId(_userId);
             // Assert
             Assert.IsAssignableFrom<OkObjectResult>(result.Result);
-            
+
             Assert.That(((result.Result as OkObjectResult)!.Value as List<Garden>)!.Count(), Is.EqualTo(gardens.Count()));
 
         }
@@ -91,7 +89,7 @@ namespace UserGardenAPI.Tests
             };
 
             // Act
-            var result = await _controller.GetGardenByUserId(_userId+"1");
+            var result = await _controller.GetGardenByUserId(_userId + "1");
             // Assert
             Assert.IsAssignableFrom<NotFoundResult>(result.Result);
         }
@@ -157,7 +155,7 @@ namespace UserGardenAPI.Tests
 
             Assert.IsAssignableFrom<OkResult>(result);
         }
-       
+
         [Test, Order(9)]
         public async Task DeleteGarden_ShouldReturnNotFound_WhenGardenIsDeleted()
         {
