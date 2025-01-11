@@ -23,7 +23,11 @@ jobs:
         cd MyGarden
         chmod +x healthcheck.sh 
     - name: Run tests
-      run: dotnet test MyGarden/tests/*.Tests/*.csproj
+      run: |
+        for project in $(find ./MyGarden/tests -name '*.Tests.csproj'); do
+            dotnet test "$project"
+        done
+
     - name: Upload test logs as artifact
       uses: actions/upload-artifact@v3
       with:
