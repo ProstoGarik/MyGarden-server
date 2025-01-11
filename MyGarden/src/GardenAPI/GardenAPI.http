@@ -1,6 +1,0 @@
-@GardenAPI_HostAddress = http://localhost:5070
-
-GET {{GardenAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

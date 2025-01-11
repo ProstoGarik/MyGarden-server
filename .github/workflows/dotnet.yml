@@ -45,7 +45,7 @@ jobs:
         cd MyGarden
         ./healthcheck.sh postgres_data_container 120 > healthcheck_data_logs.txt 
         ./healthcheck.sh postgres_identity_container 120 >> healthcheck_data_logs.txt 
-        ./healthcheck.sh garden-api 120 >> healthcheck_data_logs.txt 
+        ./healthcheck.sh plant-scheduler-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh auth-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh recognize-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh api-gateway 120 >> healthcheck_data_logs.txt

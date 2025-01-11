@@ -133,12 +133,12 @@ services:
     networks:
       - postgres    
 
-  gardenapi:
-    container_name: garden-api 
-    image: ${DOCKER_REGISTRY-}gardenapi
+  plantschedulerapi:
+    container_name: plant-scheduler-api
+    image: ${DOCKER_REGISTRY-}plantschedulerapi
     build:
       context: .
-      dockerfile: src/GardenAPI/Dockerfile
+      dockerfile: src/PlantSchedulerAPI/Dockerfile
     environment:
       - DB_HOST=postgres_data
       - POSTGRES_DB=plantsdb
@@ -171,7 +171,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123Secret_a
     depends_on:
-      postgres_data:
+      postgres_identity:
         condition: service_healthy
         restart: true
     networks:
@@ -217,6 +217,8 @@ services:
       retries: 3
       start_period: 5s
       
+
+
 volumes:
   identity-data:
   plants-data:
@@ -230,5 +232,6 @@ networks:
   backend:
     driver: bridge
     
+
 
 

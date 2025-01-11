@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GardenAPI\GardenAPI.csproj" />
+    <ProjectReference Include="..\..\src\PlantSchedulerAPI\PlantSchedulerAPI.csproj" />
   </ItemGroup>
 
 
