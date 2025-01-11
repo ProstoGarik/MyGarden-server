@@ -1,5 +1,5 @@
 ﻿using GardenAPI.Data;
-using MyGarden.Server.Entity.Common;
+using GardenAPI.Entities.Common;
 
 namespace GardenAPI.Service.Common
 {

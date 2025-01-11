@@ -1,8 +1,8 @@
 ﻿using GardenAPI.Controllers.Common;
+using GardenAPI.Entities.Common;
 using GardenAPI.Tests;
 using GardenAPI.Transfer.Common;
 using Microsoft.AspNetCore.Mvc;
-using MyGarden.Server.Entity.Common;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 

@@ -1,8 +1,8 @@
 using GardenAPI.Data;
+using GardenAPI.Entities.Common;
 using GardenAPI.Middleware;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;
-using MyGarden.Server.Entity.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 

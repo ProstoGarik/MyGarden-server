@@ -1,8 +1,8 @@
 ﻿using GardenAPI.Data;
 using GardenAPI.Entities;
+using GardenAPI.Entities.Common;
 using GardenAPI.Service.Common;
 using GardenAPI.Service.Plants;
-using MyGarden.Server.Entity.Common;
 using NUnit.Framework;
 
 namespace GardenAPI.Tests

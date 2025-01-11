@@ -1,9 +1,7 @@
 ﻿using GardenAPI.Data;
-using GardenAPI.Entities;
-using GardenAPI.Entities.Common;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MyGarden.Server.Entity.Common
+namespace GardenAPI.Entities.Common
 {
     public class WateringNeed : CommonEntity
     {
