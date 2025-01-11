@@ -30,7 +30,7 @@ namespace UserGardenAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateGarden([FromBody] Garden garden)
+        public async Task<ActionResult> CreateGarden([FromBody] Garden garden)
         {
             try
             {

@@ -25,7 +25,7 @@ jobs:
     - name: Run tests
       run: |
         for project in $(find ./MyGarden/tests -name '*.Tests.csproj'); do
-            dotnet test "$project"
+            dotnet test "$project" >> test_logs.txt
         done
 
     - name: Upload test logs as artifact
