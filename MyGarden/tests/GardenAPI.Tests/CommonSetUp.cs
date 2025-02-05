@@ -1,7 +1,8 @@
 ﻿using GardenAPI.Data;
-using GardenAPI.Entities;
 using GardenAPI.Entities.Common;
+using GardenAPI.Entities.Plants;
 using GardenAPI.Service.Common;
+using GardenAPI.Service.Gardens;
 using GardenAPI.Service.Plants;
 using NUnit.Framework;
 
@@ -15,6 +16,8 @@ namespace GardenAPI.Tests
         internal required LightNeedService _lightNeedService;
         internal required WateringNeedService _wateringNeedService;
         internal required GroupService _groupService;
+        internal required GardenService _gardenService;
+        internal required GardenTypeService _gardenTypeService;
         internal required PlantService _plantService;
         internal required EventService _eventService;
 
@@ -27,6 +30,8 @@ namespace GardenAPI.Tests
             _lightNeedService = new LightNeedService(_dataContext);
             _wateringNeedService = new WateringNeedService(_dataContext);
             _groupService = new GroupService(_dataContext);
+            _gardenService = new GardenService(_dataContext);
+            _gardenTypeService = new GardenTypeService(_dataContext);
             _plantService = new PlantService(_dataContext);
             _eventService = new EventService(_dataContext);
 

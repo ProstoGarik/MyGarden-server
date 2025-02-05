@@ -1,5 +1,5 @@
 using GardenAPI.Controllers;
-using GardenAPI.Entities;
+using GardenAPI.Entities.Plants;
 using GardenAPI.Tests;
 using GardenAPI.Transfer.Plant;
 using Microsoft.AspNetCore.Mvc;

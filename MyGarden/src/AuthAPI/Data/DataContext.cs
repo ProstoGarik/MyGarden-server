@@ -9,6 +9,17 @@ public class DataContext : IdentityDbContext<User>
     public DataContext(DbContextOptions<DataContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
+    }
+    public async Task<bool> TryInitializeAsync()
+    {
+        try
+        {
+            await Database.MigrateAsync();
+            return await Database.CanConnectAsync();
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
