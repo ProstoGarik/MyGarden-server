@@ -1,6 +1,4 @@
-﻿using GardenAPI.Transfer.Group;
-
-namespace GardenAPI.Transfer.Garden
+﻿namespace GardenAPI.Transfer.Garden
 {
     public static class GardenMapper
     {

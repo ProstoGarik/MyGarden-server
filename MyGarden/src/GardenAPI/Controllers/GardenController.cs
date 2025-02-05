@@ -1,5 +1,4 @@
 ﻿using GardenAPI.Service.Gardens;
-using GardenAPI.Service.Plants;
 using GardenAPI.Transfer.Common;
 using GardenAPI.Transfer.Garden;
 using GardenAPI.Transfer.Group;

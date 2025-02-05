@@ -1,5 +1,4 @@
 using GardenAPI.Controllers;
-using GardenAPI.Entities;
 using GardenAPI.Entities.Events;
 using GardenAPI.Entities.Plants;
 using GardenAPI.Tests;

@@ -29,7 +29,7 @@ jobs:
         done
 
     - name: Upload test logs as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-logs
         path: MyGarden/test_logs.txt
@@ -39,7 +39,7 @@ jobs:
         cd MyGarden
         docker compose up -d > build_logs.txt  
     - name: Upload build logs as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-logs
         path: MyGarden/build_logs.txt  
@@ -54,7 +54,7 @@ jobs:
         ./healthcheck.sh recognize-api 120 >> healthcheck_data_logs.txt 
         ./healthcheck.sh api-gateway 120 >> healthcheck_data_logs.txt
     - name: Upload healthcheck logs as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: healthcheck-logs
         path: MyGarden/healthcheck_data_logs.txt

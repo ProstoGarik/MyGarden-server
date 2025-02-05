@@ -42,6 +42,6 @@ namespace GardenAPI.Entities.Common
 
         #endregion
 
-        public List<Garden> Gardens{ get; set; } = [];
+        public List<Garden> Gardens { get; set; } = [];
     }
 }
